@@ -239,7 +239,7 @@ def levit(G, source, targets, weight):
 import time
 
 sam = random.sample(G.nodes, 10)
-print(*sam)
+# print(*sam)
 
 start_time = time.time()
 for point in sam:
