@@ -2,9 +2,9 @@ image:
 - Ubuntu
 - Visual Studio 2017
 install:
-- pip install lxml
-- pip install networkx
-- pip install matplotlib
+- pip install --user lxml
+- pip install --user networkx
+- pip install --user matplotlib
 
 test_script:
 - python Graphs.py
