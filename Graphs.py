@@ -100,7 +100,7 @@ def euclidean_distance(a,b):
 
 appr_hos = []
 for hospital, pos in hospitals.items():
-    min_distance = math.inf
+    min_distance = 10000000
     for node in G.nodes:
         current_distance = euclidean_distance(G.nodes[node]['pos'], pos)
         if current_distance < min_distance:     
@@ -146,7 +146,7 @@ def ways_to_hospitals(G, point_id, hospitals, method, heuristic=None):
     G.nodes[point_id]['nd_size'] = 1
 
     paths_to_hospitals = {}
-    shortest_path_length = math.inf
+    shortest_path_length = 10000000
     shortest_path = []
     
     if method == 'Levit':
@@ -159,7 +159,7 @@ def ways_to_hospitals(G, point_id, hospitals, method, heuristic=None):
                 path_length = sum(G.edges[(path_to_hospital[i], path_to_hospital[i+1])]['length'] for i in range(len(path_to_hospital)-1))
             except Exception:
                 path_to_hospital = [hospital]
-                path_length = math.inf
+                path_length = 10000000
             paths_to_hospitals[hospital] = {'path':path_to_hospital, 'leng':path_length}
     elif method == 'Dijkstra':
         for hospital in hospitals:
@@ -168,7 +168,7 @@ def ways_to_hospitals(G, point_id, hospitals, method, heuristic=None):
                 path_length = sum(G.edges[(path_to_hospital[i], path_to_hospital[i+1])]['length'] for i in range(len(path_to_hospital)-1))
             except Exception:
                 path_to_hospital = [hospital]
-                path_length = math.inf
+                path_length = 10000000
             paths_to_hospitals[hospital] = {'path':path_to_hospital, 'leng':path_length}
     
     else:
@@ -196,7 +196,7 @@ def levit(G, source, targets, weight):
     d = {}
     m1,m1s = [],[source]
     for node in G.nodes:
-        d[node] = {'leng':math.inf, 'm':3, 'pred':0}
+        d[node] = {'leng':10000000, 'm':3, 'pred':0}
     d[source] = {'leng':0, 'm':2}
         
     while m1 or m1s:
@@ -294,7 +294,7 @@ def save_pdf(G, filename, labels_dict = {}):
 
 def enter_coordinates():
     x, y = float(input()), float(input())
-    current_min = math.inf
+    current_min = 10000000
     for node in G.nodes:
         dist = euclidean_distance(G.nodes[node]['pos'], (x,y))
         if dist < current_min:
@@ -312,7 +312,7 @@ save_pdf(G, "path_to_hospital")
 
 
 def path_to_closest_hospital(G, source, hospitals):
-    closest_hospital = {'leng':math.inf}
+    closest_hospital = {'leng':10000000}
     for hospital in hospitals:
         try:
             path_to_hospital = nx.dijkstra_path(G, source, hospital, weight='length')
@@ -320,7 +320,7 @@ def path_to_closest_hospital(G, source, hospitals):
             #path_length = sum(G.edges[(path_to_hospital[i], path_to_hospital[i+1])]['length'] for i in range(len(path_to_hospital)-1))
         except Exception:
             path_to_hospital = [hospital]
-            path_length = math.inf
+            path_length = 10000000
         
         if path_length < closest_hospital['leng']:
             closest_hospital = {'hospital':hospital, 'path':path_to_hospital, 'leng':path_length}
