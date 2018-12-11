@@ -13,7 +13,7 @@ def compute_length(a,b):
     R = 6371 # средний радиус Земли
     return math.acos(math.sin(a[0]*math.pi/180)*math.sin(b[0]*math.pi/180) + math.cos(a[0]*math.pi/180)                     *math.cos(b[0]*math.pi/180)*math.cos((a[1]-b[1])*math.pi/180)) * R
 
-xml = codecs.open('map2.xml', "r", "utf-8").read()
+xml = codecs.open('map3.xml', "r", "utf-8").read()
 utf8_parser = objectify.makeparser(encoding='utf-8')
 root = objectify.fromstring(xml.encode('utf-8'), parser=utf8_parser)
 
