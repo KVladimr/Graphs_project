@@ -293,7 +293,8 @@ def save_pdf(G, filename, labels_dict = {}):
 
 
 def enter_coordinates():
-    x, y = float(input()), float(input())
+    # x, y = float(input()), float(input())
+    x, y = 58.6, 49.65
     current_min = 10000000
     for node in G.nodes:
         dist = euclidean_distance(G.nodes[node]['pos'], (x,y))
