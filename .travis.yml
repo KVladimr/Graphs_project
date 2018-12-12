@@ -1,0 +1,9 @@
+language: python
+before_install:
+  - pip install lxml
+  - pip install matplotlib
+  - pip install networkx
+  - sudo apt-get install python-tk
+script: python Graphs.py
+os:
+  - linux
