@@ -440,9 +440,12 @@ def simulated_annealing(G, store, hospitals):
 
 
 for point in random.sample(G.nodes, 10):
-    trs1 = nearest_neighbour(G, point, hospitals)
-    trs2 = simulated_annealing(G, point, hospitals)
-    print(point, trs1['leng'], trs2['leng'])
+    try:
+        trs1 = nearest_neighbour(G, point, hospitals)
+        trs2 = simulated_annealing(G, point, hospitals)
+        print(point, trs1['leng'], trs2['leng'])
+    except Exception:
+        print(point, 'No way')
     #save_pdf(G, "nearest_neighbour", trs1['order_dict'])
     #save_pdf(G, "simulated_annealing", trs2['order_dict'])
 
